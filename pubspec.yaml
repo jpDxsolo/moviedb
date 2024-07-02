@@ -1,5 +1,5 @@
 name: moviedb
-description: "A new Flutter package project."
+description: "A new Flutter package to wrap the MovieDb API"
 version: 0.0.1
 homepage:
 
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
