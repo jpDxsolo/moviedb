@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviedb/moviedb.dart';
-import 'package:http/http.dart' as http;
+import 'package:moviedb/types/movie.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,31 +58,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  late Future<Album> futureAlbum;
-  final  Moviedb moviedb = Moviedb('_apiKey', '_token', 'baseUrl', 'sessionId');
+  late Future<Movie> movie;
+  late Future<List<Movie>> movies;
+  final  Moviedb moviedb = Moviedb('e09330865b5c7b2a72b514785c9e3dda', '_token', 'sessionId');
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    futureAlbum = moviedb.fetchAlbum();
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    movies = moviedb.getRandomMoviesByDateRange(DateTime(1980,01,01), DateTime(1981,01,01));
   }
 
     @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fetch Data Example',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
@@ -91,15 +78,37 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Fetch Data Example'),
         ),
         body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
+          child: FutureBuilder<List<Movie>>(
+            future: movies,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(snapshot.data![index].title),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Release Date ${snapshot.data![index].releaseDate.year.toString()}-${snapshot.data![index].releaseDate.month.toString()}-${snapshot.data![index].releaseDate.day.toString()}'),
+                              )
+                            ],
+                          ),
+                           Text(snapshot.data![index].overview)
+                        ],
+                      ),
+                      subtitle: Image.network(snapshot.data![index].poster),
+
+                    );
+                  }, 
+                );
+                //return Text(snapshot.data!.overview);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
-
               // By default, show a loading spinner.
               return const CircularProgressIndicator();
             },
@@ -108,4 +117,5 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 }
