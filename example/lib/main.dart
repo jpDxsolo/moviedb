@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:moviedb/discover/filters.dart';
+import 'package:moviedb/api.dart';
+import 'package:moviedb/filters/movie.dart';
 import 'package:moviedb/types/movie.dart';
-import 'package:moviedb/discover/movie.dart';
+import 'package:moviedb/discover.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,17 +33,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final DiscoverMovie movie = DiscoverMovie('e09330865b5c7b2a72b514785c9e3dda');
+  final Api api = Api('e09330865b5c7b2a72b514785c9e3dda');
   late Future<List<Movie>> movies;
   @override
   void initState() {
     super.initState();
-    Filters filters = Filters();
+    MovieFilters filters = MovieFilters();
     filters.page = 10;
     filters.language = 'en';
     filters.primaryReleaseDateGte = DateTime(1980, 01, 01);
     filters.primaryReleaseDateLte = DateTime(1981, 01, 01);
-    movies = movie.getMovies(filters);
+    movies = api.discover.getMovies();
   }
 
   @override

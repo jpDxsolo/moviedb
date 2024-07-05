@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-class Filters {
+class MovieFilters {
   //use in conjunction with region
   String? certification;
   //use in conjunction with region
@@ -11,8 +11,8 @@ class Filters {
   String? certificationCountry;
   bool? includeAdult = false;
   bool? includeVideo = false;
-  //Defaults to en-US
-  String? language = 'en-US';
+  //Defaults to en
+  String? language = 'en';
   //Defaults to 1
   int? page = 1;
   DateTime? primaryReleaseDateYear;
@@ -44,9 +44,9 @@ class Filters {
   //can be a comma (AND) or pipe (OR) separated query
   String? withPeople;
   //possible values are: [1, 2, 3, 4, 5, 6] can be a comma (AND) or pipe (OR) separated query, can be used in conjunction with region
-  Int32? withReleaseType;
-  Int32? withRuntimeGte;
-  Int32? withRuntimeLte;
+  int? withReleaseType;
+  int? withRuntimeGte;
+  int? withRuntimeLte;
   //possible values are: [flatrate, free, ads, rent, buy] use in conjunction with watch_region, can be a comma (AND) or pipe (OR) separated query
   String? withWatchMonetizationTypes;
   //use in conjunction with watch_region, can be a comma (AND) or pipe (OR) separated query
@@ -56,5 +56,5 @@ class Filters {
   String? withoutPeople;
   String? withoutCompanies;
   String? withoutWatchProviders;
-  Int32? year;
+  int? year;
 }
