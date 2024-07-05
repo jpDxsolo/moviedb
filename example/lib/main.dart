@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moviedb/api.dart';
 import 'package:moviedb/filters/movie.dart';
 import 'package:moviedb/types/movie.dart';
-import 'package:moviedb/discover.dart';
+import 'package:moviedb/types/person.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TmdbApi api = TmdbApi('e09330865b5c7b2a72b514785c9e3dda');
   late Future<List<Movie>> movies;
+  late Future<List<Person>> persons;
   @override
   void initState() {
     super.initState();
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     filters.primaryReleaseDateGte = DateTime(1980, 01, 01);
     filters.primaryReleaseDateLte = DateTime(1981, 01, 01);
     movies = api.discover.getMovies();
+    persons = api.search.getPerson('Tom Hanks');
   }
 
   @override
