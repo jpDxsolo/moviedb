@@ -1,22 +1,20 @@
-import 'package:http/http.dart' as http;
-import 'package:moviedb/discover/filters.dart';
+import 'package:moviedb/api.dart';
+import 'package:moviedb/filters/movie.dart';
 import 'dart:async';
-import 'dart:convert';
 import 'package:moviedb/types/movie.dart';
+import 'package:moviedb/utils/enums.dart';
 
-class DiscoverMovie {
+class Discover extends Api {
   final String _apiKey;
-  String baseUrl = 'https://api.themoviedb.org/3';
 
-  DiscoverMovie(this._apiKey);
+  Discover(this._apiKey) : super(_apiKey);
 
-  Future<List<Movie>> getMovies([Filters? filters]) async {
-    filters ??= Filters();
-    final response = await http.get(Uri.parse(constructQuery(filters)));
+  Future<List<Movie>> getMovies([MovieFilters? filters]) async {
+    filters ??= MovieFilters();
+    final response = await query('discover/movie', HttpMethod.get, constructQuery(filters));
 
     if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
-      final List<Movie> movies = List<Movie>.from(jsonData['results'].map((x) => Movie.fromJson(x)));
+      final List<Movie> movies = List<Movie>.from(response.data["results"].map((x) => Movie.fromJson(x)));
       return movies.where((movie) => movie.language == filters!.language).toList();
     } else {
       // If the server did not return a 200 OK response,
@@ -25,7 +23,7 @@ class DiscoverMovie {
     }
   }
 
-  String constructQuery(Filters filters) {
+  String constructQuery(MovieFilters filters) {
     Map<String, String> queryParams = {
       'api_key': _apiKey,
       if (filters.certification != null) 'certification': filters.certification!,
@@ -74,7 +72,6 @@ class DiscoverMovie {
     };
 
     String queryString = queryParams.entries.map((entry) => '${entry.key}=${entry.value}').join('&');
-    print('$baseUrl/discover/movie?$queryString');
-    return '$baseUrl/discover/movie?$queryString';
+    return '?$queryString';
   }
 }
