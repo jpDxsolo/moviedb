@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Api api = Api('e09330865b5c7b2a72b514785c9e3dda');
+  final TmdbApi api = TmdbApi('e09330865b5c7b2a72b514785c9e3dda');
   late Future<List<Movie>> movies;
   @override
   void initState() {
