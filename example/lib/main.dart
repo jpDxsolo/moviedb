@@ -42,7 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
     filters.language = 'en';
     filters.primaryReleaseDateGte = DateTime(1980, 01, 01);
     filters.primaryReleaseDateLte = DateTime(1981, 01, 01);
-    movies = movie.getMovies(filters);
+    //  movies = movie.getMovies(filters);
+    movies = movie.getMovies();
   }
 
   @override

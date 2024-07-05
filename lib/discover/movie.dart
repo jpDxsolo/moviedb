@@ -10,13 +10,14 @@ class DiscoverMovie {
 
   DiscoverMovie(this._apiKey);
 
-  Future<List<Movie>> getMovies(Filters filters) async {
+  Future<List<Movie>> getMovies([Filters? filters]) async {
+    filters ??= Filters();
     final response = await http.get(Uri.parse(constructQuery(filters)));
 
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final List<Movie> movies = List<Movie>.from(jsonData['results'].map((x) => Movie.fromJson(x)));
-      return movies.where((movie) => movie.language == filters.language).toList();
+      return movies.where((movie) => movie.language == filters!.language).toList();
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
@@ -73,6 +74,7 @@ class DiscoverMovie {
     };
 
     String queryString = queryParams.entries.map((entry) => '${entry.key}=${entry.value}').join('&');
+    print('$baseUrl/discover/movie?$queryString');
     return '$baseUrl/discover/movie?$queryString';
   }
 }

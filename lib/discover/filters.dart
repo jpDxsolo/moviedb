@@ -11,8 +11,8 @@ class Filters {
   String? certificationCountry;
   bool? includeAdult = false;
   bool? includeVideo = false;
-  //Defaults to en-US
-  String? language = 'en-US';
+  //Defaults to en
+  String? language = 'en';
   //Defaults to 1
   int? page = 1;
   DateTime? primaryReleaseDateYear;
