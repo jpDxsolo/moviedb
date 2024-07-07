@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:moviedb/discover.dart';
+import 'package:moviedb/search.dart';
 import 'package:moviedb/utils/enums.dart';
 
-class Api {
+class TmdbApi {
   final String _apiKey;
   final Dio dio = Dio();
   String baseUrl = 'https://api.themoviedb.org/3';
   late Discover discover = Discover(_apiKey);
-  Api(this._apiKey);
+  late Search search = Search(_apiKey);
+  TmdbApi(this._apiKey);
 
   Future<Response> query(String endpoint, HttpMethod httpMethod, String query) async {
     Response response;

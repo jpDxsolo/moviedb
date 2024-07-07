@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:moviedb/types/movie.dart';
 import 'package:moviedb/utils/enums.dart';
 
-class Discover extends Api {
+class Discover extends TmdbApi {
   final String _apiKey;
 
   Discover(this._apiKey) : super(_apiKey);
