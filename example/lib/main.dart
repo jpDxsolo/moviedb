@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(snapshot.data![index].overview)
                         ],
                       ),
-                      subtitle: Image.network(snapshot.data![index].poster),
+                      subtitle: Image.network(snapshot.data![index].posterPath),
                     );
                   },
                 );

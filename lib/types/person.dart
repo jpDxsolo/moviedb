@@ -1,3 +1,5 @@
+import 'package:moviedb/types/movie.dart';
+
 class Person {
   bool? adult;
   int? gender;
@@ -7,7 +9,7 @@ class Person {
   String? originalName;
   double? popularity;
   String? profilePath;
-  //List<KnownFor>? knownFor;
+  List<Movie>? knownFor;
 
   Person(
       {this.adult,
@@ -17,31 +19,20 @@ class Person {
       this.name,
       this.originalName,
       this.popularity,
-      this.profilePath});
+      this.profilePath,
+      this.knownFor});
 
   factory Person.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'adult': bool? adult,
-        'gender': int? gender,
-        'id': int id,
-        'known_for_department': String? knownForDepartment,
-        'name': String name,
-        'original_name': String? originalName,
-        'popularity': double? popularity,
-        'profile_path': String? profilePath,
-        //'known_for': List<KnownFor>,
-      } =>
-        Person(
-            adult: adult,
-            gender: gender,
-            id: id,
-            knownForDepartment: knownForDepartment,
-            name: name,
-            originalName: originalName,
-            popularity: popularity,
-            profilePath: 'https://image.tmdb.org/t/p/original$profilePath'),
-      _ => throw const FormatException('Failed to load person.'),
-    };
+    return Person(
+      adult: json['adult'],
+      gender: json['gender'],
+      id: json['id'],
+      knownForDepartment: json['known_for_department'],
+      name: json['name'],
+      originalName: json['original_name'],
+      popularity: json['popularity'],
+      profilePath: 'https://image.tmdb.org/t/p/original${json['profile_path']}',
+      knownFor: (json['known_for'] as List).map((item) => Movie.fromJson(item)).toList(),
+    );
   }
 }
