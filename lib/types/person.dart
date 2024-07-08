@@ -1,4 +1,4 @@
-import 'package:jpMoviedb/types/movie.dart';
+import 'package:jp_moviedb/types/movie.dart';
 //comment
 
 class Person {

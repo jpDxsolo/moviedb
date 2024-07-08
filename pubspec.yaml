@@ -1,4 +1,4 @@
-name: jpMoviedb
+name: jp_moviedb
 description: "A new Flutter package to wrap the MovieDb API"
 version: 0.0.1
 repository: "https://github.com/jpDxsolo/moviedb"
