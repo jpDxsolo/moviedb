@@ -1,39 +1,78 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+Sure, here's a quick README file in Markdown format for your Flutter package:
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+```markdown
+# TMDB Flutter Wrapper
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter package that serves as a wrapper for The Movie Database (TMDB) API. This package simplifies the interaction with TMDB by providing easy-to-use methods for accessing various endpoints.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+This package currently supports the following TMDB API endpoints:
 
-## Getting started
+1. **Discover Movies**
+2. **Search Person**
+3. **Genres Movies**
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Installation
+
+Add the following to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  tmdb_flutter_wrapper:
+    git:
+      url: https://github.com/yourusername/tmdb_flutter_wrapper.git
+```
+
+Then, run:
+
+```sh
+flutter pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+First, import the package:
 
 ```dart
-const like = 'sample';
+import 'package:tmdb_flutter_wrapper/tmdb_flutter_wrapper.dart';
 ```
 
-## Additional information
+### Discover Movies
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+To discover movies:
+
+```dart
+final movies = await TmdbWrapper.discoverMovies();
+```
+
+### Search Person
+
+To search for a person:
+
+```dart
+final person = await TmdbWrapper.searchPerson('John Doe');
+```
+
+### Get Movie Genres
+
+To get a list of movie genres:
+
+```dart
+final genres = await TmdbWrapper.getMovieGenres();
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+This package uses the TMDB API but is not endorsed or certified by TMDB.
+```
+
+Feel free to customize the URL and any other details as needed.
