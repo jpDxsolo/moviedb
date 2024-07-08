@@ -8,7 +8,6 @@ class Movie {
   final int id;
   final String originalTitle;
   final String posterPath;
-  final String mediaType;
   final bool adult;
   final List<int> genreIds;
   final double popularity;
@@ -25,7 +24,6 @@ class Movie {
       this.backdropPath = '',
       this.id = 0,
       this.originalTitle = '',
-      this.mediaType = '',
       this.adult = false,
       this.genreIds = const [],
       this.popularity = 0.0,
@@ -43,7 +41,6 @@ class Movie {
       backdropPath: 'https://image.tmdb.org/t/p/original${json['backdrop_path']}',
       id: json['id'],
       originalTitle: json['original_title'],
-      mediaType: json['media_type'],
       adult: json['adult'],
       genreIds: List<int>.from(json['genre_ids']),
       popularity: json['popularity'],
