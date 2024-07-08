@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* TMDB API library. Currently Discover/Movie , Search/Person , and Genres/Movie supported
