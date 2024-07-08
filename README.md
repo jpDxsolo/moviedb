@@ -72,5 +72,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This package uses the TMDB API but is not endorsed or certified by TMDB.
 ```
-
-Feel free to customize the URL and any other details as needed.
