@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:moviedb/discover.dart';
-import 'package:moviedb/genres.dart';
-import 'package:moviedb/search.dart';
-import 'package:moviedb/utils/enums.dart';
+import 'package:jpMoviedb/discover.dart';
+import 'package:jpMoviedb/genres.dart';
+import 'package:jpMoviedb/search.dart';
+import 'package:jpMoviedb/utils/enums.dart';
 
 class TmdbApi {
   final String _apiKey;

@@ -1,8 +1,8 @@
-import 'package:moviedb/api.dart';
-import 'package:moviedb/filters/movie.dart';
+import 'package:jpMoviedb/api.dart';
+import 'package:jpMoviedb/filters/movie.dart';
 import 'dart:async';
-import 'package:moviedb/types/movie.dart';
-import 'package:moviedb/utils/enums.dart';
+import 'package:jpMoviedb/types/movie.dart';
+import 'package:jpMoviedb/utils/enums.dart';
 
 class Discover extends TmdbApi {
   final String _apiKey;

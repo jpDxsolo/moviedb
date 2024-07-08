@@ -1,6 +1,6 @@
-import 'package:moviedb/api.dart';
-import 'package:moviedb/types/genre.dart';
-import 'package:moviedb/utils/enums.dart';
+import 'package:jpMoviedb/api.dart';
+import 'package:jpMoviedb/types/genre.dart';
+import 'package:jpMoviedb/utils/enums.dart';
 
 class Genres extends TmdbApi {
   final String _apiKey;

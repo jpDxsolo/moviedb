@@ -1,7 +1,7 @@
-name: moviedb
+name: jpMoviedb
 description: "A new Flutter package to wrap the MovieDb API"
 version: 0.0.1
-homepage:
+repository: "https://github.com/jpDxsolo/moviedb"
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
