@@ -1,5 +1,3 @@
-Sure, here's a quick README file in Markdown format for your Flutter package:
-
 ```markdown
 # TMDB Flutter Wrapper
 
