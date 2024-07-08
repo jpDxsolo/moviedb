@@ -1,6 +1,6 @@
-import 'package:jpMoviedb/api.dart';
-import 'package:jpMoviedb/types/person.dart';
-import 'package:jpMoviedb/utils/enums.dart';
+import 'package:jp_moviedb/api.dart';
+import 'package:jp_moviedb/types/person.dart';
+import 'package:jp_moviedb/utils/enums.dart';
 
 class Search extends TmdbApi {
   final String _apiKey;
