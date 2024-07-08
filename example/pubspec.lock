@@ -107,6 +107,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  jpMoviedb:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -163,13 +170,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
-  moviedb:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1"
   path:
     dependency: transitive
     description:
