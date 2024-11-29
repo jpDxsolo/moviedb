@@ -13,6 +13,7 @@ class Movie {
   final double popularity;
   final bool video;
   final int voteCount;
+  int runtime;
 
   Movie(
       {required this.title,
@@ -28,7 +29,8 @@ class Movie {
       this.genreIds = const [],
       this.popularity = 0.0,
       this.video = false,
-      this.voteCount = 0});
+      this.voteCount = 0,
+      this.runtime = 0});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
@@ -46,6 +48,7 @@ class Movie {
       popularity: json['popularity'],
       video: json['video'],
       voteCount: json['vote_count'],
+      runtime: json.containsKey('runtime') ? json['runtime'] : 0,
     );
   }
 }

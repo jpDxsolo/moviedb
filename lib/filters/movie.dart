@@ -57,4 +57,19 @@ class MovieFilters {
   String? withoutCompanies;
   String? withoutWatchProviders;
   int? year;
+
+  MovieFilters({
+    this.page,
+    this.language,
+    this.primaryReleaseDateGte,
+    this.primaryReleaseDateLte,
+  });
+  factory MovieFilters.fromMap(Map<String, dynamic> map) {
+    return MovieFilters(
+      page: map['page'] as int,
+      language: map['language'] as String,
+      primaryReleaseDateGte: DateTime.parse(map['primaryReleaseDateGte'] as String),
+      primaryReleaseDateLte: DateTime.parse(map['primaryReleaseDateLte'] as String),
+    );
+  }
 }

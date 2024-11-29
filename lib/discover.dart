@@ -23,6 +23,22 @@ class Discover extends TmdbApi {
     }
   }
 
+  Future<Movie?> getMovieDetails(Movie movie) async {
+    MovieFilters filters = MovieFilters();
+    filters.language = 'en-US';
+    try {
+      final response = await query('movie/${movie.id}', HttpMethod.get, constructQuery(filters));
+
+      if (response.statusCode == 200) {
+        var responseDetails = response.data;
+        movie.runtime = responseDetails['runtime'];
+      }
+      return movie;
+    } catch (e) {
+      throw Exception('Failed to load movie details');
+    }
+  }
+
   String constructQuery(MovieFilters filters) {
     Map<String, String> queryParams = {
       'api_key': _apiKey,
