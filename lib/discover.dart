@@ -23,7 +23,7 @@ class Discover extends TmdbApi {
     }
   }
 
-  Future<Movie?> getMovieDetails(Movie movie) async {
+  Future<Movie> getMovieDetails(Movie movie) async {
     MovieFilters filters = MovieFilters();
     filters.language = 'en-US';
     try {
